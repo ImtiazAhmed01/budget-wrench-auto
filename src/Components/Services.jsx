@@ -70,7 +70,7 @@
 // }
 // app/services/page.js
 // src/app/Components/Services.jsx
-import { dbConnect } from '@/lib/dbConnect';
+import { collectionNamesObj, dbConnect } from '@/lib/dbConnect';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
@@ -78,7 +78,7 @@ import { FaArrowRight } from 'react-icons/fa';
 export default async function Services() {
     let data = [];
     try {
-        const serviceCollection = await dbConnect('services');
+        const serviceCollection = await dbConnect(collectionNamesObj.servicesCollection);
         data = await serviceCollection.find({}).toArray();
     } catch (error) {
         console.error('Error fetching services:', error);

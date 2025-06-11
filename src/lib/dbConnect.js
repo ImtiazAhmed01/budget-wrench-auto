@@ -54,6 +54,9 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 let cachedClient = null;
 let cachedDb = null;
 
+export const collectionNamesObj = {
+    servicesCollection: "services"
+}
 export async function dbConnect(collectionName) {
     if (cachedClient && cachedDb) {
         return cachedDb.collection(collectionName);
