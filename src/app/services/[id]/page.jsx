@@ -30,7 +30,7 @@ export default async function ServiceDetailsPage({ params }) {
                     </div>
                 </figure>
             </section>
-            <section className="container mx-auto grid grid-cols-12 gap-4 mt-4">
+            <section className="container mx-auto grid grid-cols-12 gap-4 mt-4 lg:px-16">
                 {/* Left Side */}
                 <div className="col-span-9 space-y-4">
                     <Image

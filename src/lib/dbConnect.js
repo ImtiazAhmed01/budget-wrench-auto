@@ -55,7 +55,8 @@ let cachedClient = null;
 let cachedDb = null;
 
 export const collectionNamesObj = {
-    servicesCollection: "services"
+    servicesCollection: "services",
+    userCollection: "user"
 }
 export async function dbConnect(collectionName) {
     if (cachedClient && cachedDb) {

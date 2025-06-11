@@ -9,10 +9,10 @@ const Navbar = () => {
         return (
             <>
                 <li><Link href={'/'}>Home</Link></li>
-                <li><Link href={'/'}>Services</Link></li>
-                <li><Link href={'/'}>Blogs</Link></li>
-                <li><Link href={'/'}>About</Link></li>
-                <li><Link href={'/'}>Contacts</Link></li>
+                <li><Link href={'/services'}>Services</Link></li>
+                <li><Link href={'/blogs'}>Blogs</Link></li>
+                <li><Link href={'/sbout'}>About</Link></li>
+                <li><Link href={'/my-bookings'}>My Bookings</Link></li>
             </>
         )
     };
@@ -52,6 +52,30 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <ul className="menu menu-horizontal px-1">
+                        {/* {status == "authenticated" ? (
+                            <>
+                                <li>
+                                    <Image
+                                        src={session?.user?.image}
+                                        width={50}
+                                        height={50}
+                                        alt="user-logo"
+                                    />
+                                </li>
+                                <li onClick={() => signOut()}>Log Out</li>
+                            </>
+                        ) : ( */}
+                        <>
+                            <li>
+                                <Link href={"/register"}>Register</Link>
+                            </li>
+                            <li>
+                                <Link href={"/login"}>Login</Link>
+                            </li>
+                        </>
+                        {/* )} */}
+                    </ul>
                     <a className="btn btn-outline">Appointment</a>
                 </div>
             </div>
