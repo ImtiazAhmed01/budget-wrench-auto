@@ -168,7 +168,7 @@ export default function NavBar() {
                                         alt="user-logo"
                                     />
                                 </li>
-                                <li onClick={() => signOut()}>Log Out</li>
+                                <li className="btn hover:bg-orange-500 hover:text-white" onClick={() => signOut()}>Log Out</li>
                             </>
                         ) : (
                             <>

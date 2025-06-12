@@ -1,23 +1,13 @@
-// import { MongoClient, ServerApiVersion } from 'mongodb';
 
-// export default function dbConnect(collectionName) {
-//     const uri = process.env.MONGODB_URI
-//     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-//     const client = new MongoClient(uri, {
-//         serverApi: {
-//             version: ServerApiVersion.v1,
-//             strict: true,
-//             deprecationErrors: true,
-//         }
-//     });
-//     return client.db(process.env.DB_NAME).collection(collectionName)
-// }
-// lib/dbConnect.js
 // import { MongoClient, ServerApiVersion } from 'mongodb';
 
 // let cachedClient = null;
 // let cachedDb = null;
 
+// export const collectionNamesObj = {
+//     servicesCollection: "services",
+//     userCollection: "user"
+// }
 // export async function dbConnect(collectionName) {
 //     if (cachedClient && cachedDb) {
 //         return cachedDb.collection(collectionName);
@@ -48,16 +38,17 @@
 //     }
 // }
 
-// lib/dbConnect.js
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 let cachedClient = null;
 let cachedDb = null;
 
 export const collectionNamesObj = {
     servicesCollection: "services",
-    userCollection: "user"
-}
+    userCollection: "user",
+    // bookingCollection: "test_booking",
+};
+
 export async function dbConnect(collectionName) {
     if (cachedClient && cachedDb) {
         return cachedDb.collection(collectionName);
@@ -65,7 +56,7 @@ export async function dbConnect(collectionName) {
 
     const uri = process.env.MONGODB_URI;
     if (!uri) {
-        throw new Error('MONGODB_URI is not defined in environment variables');
+        throw new Error("MONGODB_URI is not defined");
     }
 
     const client = new MongoClient(uri, {
@@ -76,14 +67,10 @@ export async function dbConnect(collectionName) {
         },
     });
 
-    try {
-        await client.connect();
-        const db = client.db(process.env.DB_NAME);
-        cachedClient = client;
-        cachedDb = db;
-        return db.collection(collectionName);
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-        throw error;
-    }
+    await client.connect(); // Ensure the client is connected before using
+    const db = client.db(process.env.DB_NAME);
+    cachedClient = client;
+    cachedDb = db;
+
+    return db.collection(collectionName);
 }
