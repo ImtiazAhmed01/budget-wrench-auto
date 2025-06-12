@@ -2,14 +2,17 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { collectionNamesObj, dbConnect } from "@/lib/dbConnect";
-import { ObjectId } from 'mongodb';
+// import { collectionNamesObj, dbConnect } from "@/lib/dbConnect";
+// import { ObjectId } from 'mongodb';
 
 export default async function ServiceDetailsPage({ params }) {
     const p = await params;
 
-    const serviceCollection = await dbConnect(collectionNamesObj.servicesCollection);
-    const data = await serviceCollection.findOne({ _id: new ObjectId(p.id) });
+    // const serviceCollection = await dbConnect(collectionNamesObj.servicesCollection);
+    // const data = await serviceCollection.findOne({ _id: new ObjectId(p.id) });
+
+    const res = await fetch(`http://localhost:3000/api/service/${p.id}`);
+    const data = await res.json();
 
     return (
         <div className="container mx-auto">
