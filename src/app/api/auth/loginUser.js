@@ -1,4 +1,4 @@
-"user server"
+"use server"
 import bcrypt from "bcrypt"
 import { collectionNamesObj, dbConnect } from "@/lib/dbConnect";
 
