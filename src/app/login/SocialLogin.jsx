@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { signIn, useSession, } from "next-auth/react";
 import { useRouter } from "next/navigation";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useEffect } from "react";
 export default function SocialLogin() {
     const router = useRouter();

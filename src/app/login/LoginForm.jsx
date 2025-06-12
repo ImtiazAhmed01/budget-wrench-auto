@@ -5,10 +5,8 @@ import { FaGithub } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import SocialLogin from "./SocialLogin";
-// import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-// import { useRouter } from "next/router";
 
 export default function LoginForm() {
     const router = useRouter();
