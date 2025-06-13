@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const CheckoutForm = ({ data }) => {
     const { data: session } = useSession();
-    console.log(session);
+    // console.log(session);
 
     const handleBookService = async (e) => {
         toast("Submitting Booking...");
@@ -19,16 +19,14 @@ const CheckoutForm = ({ data }) => {
         const address = form.address.value;
         const email = form.email.value;
         const bookingPayload = {
-            // Session
+
             customerName: name,
             email,
 
-            // User Inputs
             date,
             phone,
             address,
-
-            // Extra information
+            //server will receive behind the scene
             service_id: data._id,
             service_name: data.title,
             service_img: data.img,
@@ -37,7 +35,8 @@ const CheckoutForm = ({ data }) => {
 
         console.log(bookingPayload);
         const res = await fetch(
-            "https://nextjs-car-doctor-kappa.vercel.app/api/service",
+            // "https://nextjs-car-doctor-kappa.vercel.app/api/service",
+            "http://localhost:3000/api/service",
             {
                 method: "POST",
                 body: JSON.stringify(bookingPayload),

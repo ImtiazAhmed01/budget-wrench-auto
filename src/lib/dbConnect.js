@@ -46,7 +46,7 @@ let cachedDb = null;
 export const collectionNamesObj = {
     servicesCollection: "services",
     userCollection: "user",
-    // bookingCollection: "test_booking",
+    bookingCollection: "booking",
 };
 
 export async function dbConnect(collectionName) {
