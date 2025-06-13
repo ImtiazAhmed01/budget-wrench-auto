@@ -6,7 +6,8 @@ export default function DeleteBookingButton({ id }) {
     const router = useRouter();
     const handleDelete = async (id) => {
         const res = await fetch(
-            `https://nextjs-car-doctor-kappa.vercel.app/api/service/${id}`,
+            // `https://nextjs-car-doctor-kappa.vercel.app/api/service/${id}`,
+            `http://localhost:3000/api/service/${id}`,
             {
                 method: "DELETE",
             }
