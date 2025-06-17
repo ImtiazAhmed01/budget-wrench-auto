@@ -1,12 +1,13 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
 const BookingUpdateForm = ({ data }) => {
     const { data: session } = useSession();
-
+    const router = useRouter()
 
     const handleBookService = async (e) => {
         toast("Submitting Booking...");
@@ -28,12 +29,13 @@ const BookingUpdateForm = ({ data }) => {
             // "https://nextjs-car-doctor-kappa.vercel.app/api/service",
             `http://localhost:3000/api/my-booking/${data._id}`,
             {
-                method: "POST",
+                method: "PATCH",
                 body: JSON.stringify(bookingPayload),
             }
         );
         const postedResponse = await res.json();
-        console.log("POSTED DATA", postedResponse);
+        router.push("/my-bookings")
+        console.log("UPDATED DATA", postedResponse);
     };
 
     return (
@@ -76,7 +78,7 @@ const BookingUpdateForm = ({ data }) => {
                             </label>
                             <input
                                 type="text"
-                                defaultValue={data?.price}
+                                defaultValue={data?.service_price}
                                 readOnly
                                 name="price"
                                 className="input input-bordered"
@@ -86,7 +88,12 @@ const BookingUpdateForm = ({ data }) => {
                             <label className="label">
                                 <span className="label-text">Date</span>
                             </label>
-                            <input type="date" name="date" className="input input-bordered" />
+                            <input
+                                defaultValue={data?.date}
+                                type="date"
+                                name="date"
+                                className="input input-bordered"
+                            />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -95,6 +102,7 @@ const BookingUpdateForm = ({ data }) => {
                             <input
                                 type="text"
                                 name="phone"
+                                defaultValue={data?.phone}
                                 placeholder="Your Phone"
                                 className="input input-bordered"
                             />
@@ -106,6 +114,7 @@ const BookingUpdateForm = ({ data }) => {
                             <input
                                 type="text"
                                 name="address"
+                                defaultValue={data?.address}
                                 placeholder="Your Address"
                                 className="input input-bordered"
                             />
