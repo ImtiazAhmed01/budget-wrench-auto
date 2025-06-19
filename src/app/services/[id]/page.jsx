@@ -49,7 +49,7 @@ export default async function ServiceDetailsPage({ params }) {
                 {/* Right Side */}
                 <div className="col-span-3 space-y-4">
                     <Link href={`/checkout/${data._id}`}>
-                        <button className="w-full text-white h-9 bg-orange-500">
+                        <button className="w-full text-white h-9 bg-orange-500 btn">
                             Checkout
                         </button>
                     </Link>
