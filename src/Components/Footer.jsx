@@ -1,10 +1,20 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Footer = () => {
     return (
         <div>
             <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-                <nav>
+                <nav><Link href={"/"} className="text-xl">
+                    <Image
+                        src={"/assets/logo.svg"}
+                        width={107}
+                        height={87}
+                        alt="brand logo"
+                        className='bg-white'
+                    />
+                </Link>
                     <h1 className='text-3xl font-bold'>Car Doctor</h1>
                 </nav>
                 <nav>
