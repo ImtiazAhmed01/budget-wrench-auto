@@ -22,16 +22,21 @@ export default function HomeCarousel() {
     }, [length]);
 
     return (
-        <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
+        <div className="relative w-full max-w-screen-xl mx-auto h-[400px] overflow-hidden mb-7">
             {images.map((img, index) => (
                 <div
                     key={index}
                     className={`transition-opacity duration-1000 ${index === current ? "opacity-100" : "opacity-0 absolute inset-0"
                         }`}
                 >
-                    <img src={img} alt={`Slide ${index}`} className="w-full h-[400px] object-cover" />
+                    <img
+                        src={img}
+                        alt={`Slide ${index}`}
+                        className="w-full h-[400px] object-cover"
+                    />
                 </div>
             ))}
+
 
             {/* Arrows */}
             <button
@@ -46,6 +51,6 @@ export default function HomeCarousel() {
             >
                 ❯
             </button>
-        </div>
+        </div >
     );
 }
